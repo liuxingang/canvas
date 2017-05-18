@@ -312,7 +312,7 @@
             roller10_1.angle =0;
 
 
-            //粒子垂直运动
+            //粒子直线运动
             var dots = [],
                 numDots = 800,
                 friction = 0;
@@ -328,7 +328,7 @@
 
             function drawDots (dot){
                 // dot.vx += Math.random() * 0.2 -0.1;
-                dot.vy += 0.03;
+                dot.vy += 0.00;
                 // dot.x += dot.vx;
                 dot.y += dot.vy;
                 dot.vx += friction;
@@ -343,11 +343,20 @@
                 dot.draw(context);
             }
 
+
+            //直线动画  组件化
+            var lineDots = new LineDots();
+                // lineDots.speedX = -0.01;
+                lineDots.speedY = -0.01;
+
+
+
             //弧形动画 
             var circleDots1 = new CircleDots(100,28,6, 3*Math.PI/2,'yellow');
-                circleDots1.speed = 0.02;
+                circleDots1.speed = 0.00;
                 circleDots1.x = 266;
                 circleDots1.y = 276;
+
             
 
 
@@ -675,6 +684,7 @@
             //直线粒子运动
             dots.forEach(drawDots);
 
+            lineDots.draw(context);
             circleDots1.draw(context);
             
         }())

@@ -254,6 +254,82 @@ Dot.prototype.draw = function(context) {
     context.restore();
 };
 
+//直线粒子动画
+//numDots 粒子数量
+//width 粒子分布区域宽度
+//height 粒子分布区域高度
+//color 粒子颜色
+function LineDots(numDots, width, height, color) {
+    if (numDots === undefined) {
+        numDots = 100;
+    }
+    if (color === undefined) {
+        color = 'yellow';
+    }
+    if (width === undefined) {
+        width = 200;
+    }
+    if (height === undefined) {
+        height = 20;
+    }
+
+    this.x = 50;
+    this.y = 50;
+    this.numDots = numDots;
+    this.dots = [];
+    this.color = color;
+    this.width = width;
+    this.height = height;
+    this.speedX = 0;  
+    this.speedY = 0;
+
+    for (var dot, i = 0; i < numDots; i++) {
+        dot = new Dot(1, this.color);
+        dot.x = this.x + Math.random() * this.width;
+        dot.y = this.y + Math.random() * this.height;
+        dot.vx = 0;
+        dot.vy = 0;
+        this.dots.push(dot);
+    }
+};
+
+LineDots.prototype.draw = function(context) {
+    var self = this;
+
+    function draw(dot, e) {
+
+        dot.vx += e.speedX;
+        dot.vy += e.speedY;
+        dot.x += dot.vx;
+        dot.y += dot.vy;
+
+        if (e.speedX > 0 && dot.x > e.x + e.width) {
+            dot.x = e.x + Math.random() * e.width;
+            dot.vx = 0;
+        }
+
+        if (e.speedX < 0 && dot.x < e.x ) {
+            dot.x = e.x + Math.random() * e.width;
+            dot.vx = 0;
+        }
+
+        if (e.speedY > 0 && dot.y > e.y + e.height) {
+            dot.y = e.y + Math.random() * e.height;
+            dot.vy = 0;
+        }
+        if (e.speedY < 0 && dot.y < e.y ) {
+            dot.y = e.y + Math.random() * e.height;
+            dot.vy = 0;
+        }
+
+        dot.draw(context);
+    }
+
+    for (var i = 0; i < this.numDots; i++) {
+        draw(this.dots[i], self)
+    }
+};
+
 //圆弧粒子动画
 //numDots 粒子数量
 //hashRadiusOut 粒子分布的外径
@@ -297,8 +373,9 @@ function CircleDots(numDots, hashRadiusOut, hashRadiusInner, directionSize, colo
 
 CircleDots.prototype.draw = function(context) {
     var self = this;
-    function draw(dot,e) {
-        
+
+    function draw(dot, e) {
+
         dot.vx = Math.cos(dot.angle) * dot.centerRadius;
         dot.vy = Math.sin(dot.angle) * dot.centerRadius;
 
@@ -317,7 +394,7 @@ CircleDots.prototype.draw = function(context) {
         }
         if (e.speed < 0) {
 
-            if (dot.angle < e.directionSize ) {
+            if (dot.angle < e.directionSize) {
                 dot.angle = Math.random() * (Math.PI) + e.directionSize;
             }
 
@@ -325,7 +402,7 @@ CircleDots.prototype.draw = function(context) {
         dot.draw(context);
     }
 
-    for(var i = 0;i<this.numDots;i++){
-        draw(this.dots[i],self)
+    for (var i = 0; i < this.numDots; i++) {
+        draw(this.dots[i], self)
     }
 };
