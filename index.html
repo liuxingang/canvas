@@ -344,41 +344,41 @@
             }
 
             // //粒子 圆弧运动
-            // var circleDots = [],
-            //     circleNumDots = 100;
+            var circleDots = [],
+                circleNumDots = 100;
 
-            // for(var dot,i = 0;i<circleNumDots;i++){
-            //     dot.angle = Math.random() * (Math.PI)-Math.PI/2;
-            //     dot.centerRadius =  28 -Math.random()*6;
-            //     dot = new Dot(1,"yellow");
-            //     dot.speed = 0.00;
-            //     circleDots.push(dot);
+            for(var dot,i = 0;i<circleNumDots;i++){
+                dot.angle = Math.random() * (Math.PI)-Math.PI/2;
+                dot.centerRadius =  28 -Math.random()*6;
+                dot = new Dot(1,"yellow");
+                dot.speed = 0.00;
+                circleDots.push(dot);
 
-            // }
+            }
 
-            // function drawCircleDots (dot){
+            function drawCircleDots (dot){
                 
-            //     dot.vx =   Math.cos(dot.angle)*dot.centerRadius ;
-            //     dot.vy =  Math.sin(dot.angle) *dot.centerRadius;
+                dot.vx =   Math.cos(dot.angle)*dot.centerRadius ;
+                dot.vy =  Math.sin(dot.angle) *dot.centerRadius;
                 
-            //     dot.x =  400 + dot.vx;
-            //     dot.y =  300 +  dot.vy;
-            //     dot.angle += dot.speed;
+                dot.x =  400 + dot.vx;
+                dot.y =  300 +  dot.vy;
+                dot.angle += dot.speed;
                 
 
 
-            //     if(dot.speed !==0){
+                if(dot.speed !==0){
 
-            //         if(dot.angle > Math.PI/2 ){
-            //             dot.angle = Math.random() * (Math.PI)-Math.PI/2
+                    if(dot.angle > Math.PI/2 ){
+                        dot.angle = Math.random() * (Math.PI)-Math.PI/2
                         
-            //         }
+                    }
                     
-            //     }
+                }
                 
 
-            //     dot.draw(context);
-            // };
+                dot.draw(context);
+            };
 
             var circleDots1 = new CircleDots(100,30,6, Math.PI,'yellow');
                 circleDots1.speed = 0.03;
