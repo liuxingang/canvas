@@ -315,6 +315,13 @@ CircleDots.prototype.draw = function(context) {
             }
 
         }
+        if (e.speed < 0) {
+
+            if (dot.angle < e.directionSize ) {
+                dot.angle = Math.random() * (Math.PI) + e.directionSize;
+            }
+
+        }
         dot.draw(context);
     }
 

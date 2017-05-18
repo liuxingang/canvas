@@ -314,7 +314,7 @@
 
             //粒子垂直运动
             var dots = [],
-                numDots = 1000,
+                numDots = 800,
                 friction = 0;
 
             for(var dot,i = 0;i<numDots;i++){
@@ -328,7 +328,7 @@
 
             function drawDots (dot){
                 // dot.vx += Math.random() * 0.2 -0.1;
-                dot.vy += 0.000;
+                dot.vy += 0.03;
                 // dot.x += dot.vx;
                 dot.y += dot.vy;
                 dot.vx += friction;
@@ -345,7 +345,7 @@
 
             //弧形动画 
             var circleDots1 = new CircleDots(100,28,6, 3*Math.PI/2,'yellow');
-                circleDots1.speed = -0.03;
+                circleDots1.speed = 0.02;
                 circleDots1.x = 266;
                 circleDots1.y = 276;
             
