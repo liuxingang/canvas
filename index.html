@@ -40,322 +40,217 @@
             gear1.angle =90; 
             
             //中间两个小滚筒
-        var roller = new Roller(10),
-            roller1 = new Roller(10),
-            roller2 = new Roller(12),
-            roller3 = new Roller(23),
-            roller4 = new Roller(36),
-            roller4_1 = new Roller(7),
-            roller4_2 = new Roller(10),
-            roller4_3 = new Roller(7),
-            roller4_4 = new Roller(10),
-            roller4_5 = new Roller(7),
-            roller4_6 = new Roller(10),
-            roller4_7 = new Roller(7),
-            roller4_8 = new Roller(14),
-            roller5 = new Roller(36),
-            roller6 = new Roller(76),
-            roller6_1 = new Roller(10),
-            roller6_2 = new Roller(7),
-            roller6_3 = new Roller(7),
-            roller6_4 = new Roller(7),
-            roller6_5 = new Roller(10),
-            roller6_6 = new Roller(7),
-            roller6_7 = new Roller(10),
-            roller6_8 = new Roller(7),
-            roller6_9 = new Roller(10),
-            roller6_10 = new Roller(7),
-            roller6_11 = new Roller(10),
-            roller7 = new Roller(36),
-            roller7_1 = new Roller(18),
-            roller7_2 = new Roller(18),
-            roller7_3 = new Roller(9);
-            roller7_4 = new Roller(10);
-            roller7_5 = new Roller(10);
-            roller8 = new Roller(36),
-            roller8_1 = new Roller(18),
-            roller8_2 = new Roller(18),
-            roller8_3 = new Roller(9);
-            roller8_4 = new Roller(10);
-            roller8_5 = new Roller(10);
+        var leftRoller1 = new Roller(238,424,10),
+            leftRoller2 = new Roller(268,434,10),
+            //右侧滚筒
+            roller0 = new Roller(376,470,10),
+            roller1 = new Roller(444,470,10),
+            roller2 = new Roller(466,440,12),
+            roller3 = new Roller(508,442,23),
+            roller4 = new Roller(546,388,36),
+            roller4_1 = new Roller(500,402,7),
+            roller4_2 = new Roller(496,382,10),
+            roller4_3 = new Roller(506,363,7),
+            roller4_4 = new Roller(518,346,10),
+            roller4_5 = new Roller(538,341,7),
+            roller4_6 = new Roller(558,339,10),
+            roller4_7 = new Roller(582,356,7),
+            roller4_8 = new Roller(598,374,14),
+            roller5 = new Roller(612,434,36),
+            roller6 = new Roller(720,372,76),
+            roller6_1 = new Roller(626,384,10),
+            roller6_2 = new Roller(629,362,7),
+            roller6_3 = new Roller(632,345,7),
+            roller6_4 = new Roller(638,329,7),
+            roller6_5 = new Roller(648,310,10),
+            roller6_6 = new Roller(666,299,7),
+            roller6_7 = new Roller(682,285,10),
+            roller6_8 = new Roller(702,282,7),
+            roller6_9 = new Roller(722,277,10),
+            roller6_10 = new Roller(752,286,7),
+            roller6_11 = new Roller(772,292,10),
+            roller7 = new Roller(826,434,36),
+            roller7_1 = new Roller(884,414,18),
+            roller7_2 = new Roller(926,420,18),
+            roller7_3 = new Roller(954,436,9);
+            roller7_4 = new Roller(976,426,10);
+            roller7_5 = new Roller(968,456,10);
+            roller8 = new Roller(826,310,36),
+            roller8_1 = new Roller(884,288,18),
+            roller8_2 = new Roller(926,294,18),
+            roller8_3 = new Roller(954,310,9);
+            roller8_4 = new Roller(976,300,10);
+            roller8_5 = new Roller(954,332,10);
 
             //最右侧传送带
-            roller9 = new Roller(7);
-            roller9_1 = new Roller(7);
-            roller9_2 = new Roller(7);
-            roller9_3 = new Roller(7);
+            roller9 = new Roller(926,354,7);
+            roller9_1 = new Roller(1004,354,7);
+            roller9_2 = new Roller(984,370,7);
+            roller9_3 = new Roller(1060,458,7);
         
             //右下传送带
-            roller10 = new Roller(7);
-            roller10_1 = new Roller(7);
+            roller10 = new Roller(926,478,7);
+            roller10_1 = new Roller(1084,478,7);
 
 
 
-            roller.x = 376;
-            roller.y = 470;
-            roller.speed =10;
-            roller.angle =0;
+            
+            roller0.speed =10;
+            roller0.angle =0;
 
-            roller1.x = 444;
-            roller1.y = 470;
             roller1.speed =10;
             roller1.angle =0;
 
-            roller2.x = 466;
-            roller2.y = 440;
+            
             roller2.speed =-5;
             roller2.angle =0;
 
-            roller3.x = 508;
-            roller3.y = 442;
+    
             roller3.speed =3;
             roller3.angle =0;
 
-            roller4.x = 546;
-            roller4.y = 388;
+    
             roller4.speed =3;
             roller4.angle =0;
 
-            roller4_1.x = 500;
-            roller4_1.y = 402;
             roller4_1.speed =0;
             roller4_1.angle =0;
 
-            roller4_2.x = 496;
-            roller4_2.y = 382;
             roller4_2.speed =0;
             roller4_2.angle =0;
 
-            roller4_3.x = 506;
-            roller4_3.y = 363;
+        
             roller4_3.speed =0;
             roller4_3.angle =0;
 
-            roller4_4.x = 518;
-            roller4_4.y = 346;
             roller4_4.speed =0;
             roller4_4.angle =0;
 
-            roller4_5.x = 538;
-            roller4_5.y = 341;
             roller4_5.speed =0;
             roller4_5.angle =0;
 
-            roller4_6.x = 558;
-            roller4_6.y = 339;
             roller4_6.speed =0;
             roller4_6.angle =0;
 
-            roller4_7.x = 582;
-            roller4_7.y = 356;
             roller4_7.speed =0;
             roller4_7.angle =0;
 
-            roller4_8.x = 598;
-            roller4_8.y = 374;
             roller4_8.speed =0;
             roller4_8.angle =0;
 
-            roller5.x = 612;
-            roller5.y = 434;
             roller5.speed =-1;
             roller5.angle =0;
 
-            roller6.x = 720;
-            roller6.y = 372;
             roller6.speed =1;
             roller6.angle =0;
 
-            roller6_1.x = 626;
-            roller6_1.y = 384;
             roller6_1.speed =0;
             roller6_1.angle =0;
 
-            roller6_2.x = 629;
-            roller6_2.y = 362;
             roller6_2.speed =0;
             roller6_2.angle =0;
 
-            roller6_3.x = 632;
-            roller6_3.y = 345;
+        
             roller6_3.speed =0;
             roller6_3.angle =0;
 
-            roller6_4.x = 638;
-            roller6_4.y = 329;
+        
             roller6_4.speed =0;
             roller6_4.angle =0;
 
-            roller6_5.x = 648;
-            roller6_5.y = 310;
+    
             roller6_5.speed =8;
             roller6_5.angle =0;
 
-            roller6_6.x = 666;
-            roller6_6.y = 299;
+            
             roller6_6.speed =0;
             roller6_6.angle =0;
 
-            roller6_7.x = 682;
-            roller6_7.y = 285;
+        
             roller6_7.speed =8;
             roller6_7.angle =0;
 
-            roller6_8.x = 702;
-            roller6_8.y = 282;
+        
             roller6_8.speed =0;
             roller6_8.angle =0;
 
-            roller6_9.x = 722;
-            roller6_9.y = 277;
+        
             roller6_9.speed =8;
             roller6_9.angle =0;
 
-            roller6_10.x = 752;
-            roller6_10.y = 286;
             roller6_10.speed =0;
             roller6_10.angle =0;
 
-            roller6_11.x = 772;
-            roller6_11.y = 292;
             roller6_11.speed =8;
             roller6_11.angle =0;
 
-            roller7.x = 826;
-            roller7.y = 434;
             roller7.speed =5;
             roller7.angle =0;
 
-            roller7_1.x = 884;
-            roller7_1.y = 414;
+        
             roller7_1.speed =5;
             roller7_1.angle =0;
 
-            roller7_2.x = 926;
-            roller7_2.y = 420;
             roller7_2.speed =5;
             roller7_2.angle =0;
 
-            roller7_3.x = 954;
-            roller7_3.y = 436;
+        
             roller7_3.speed =5;
             roller7_3.angle =0;
 
-            roller7_4.x = 976;
-            roller7_4.y = 426;
             roller7_4.speed =8;
             roller7_4.angle =0;
 
-            roller7_5.x = 968;
-            roller7_5.y = 456;
             roller7_5.speed =0;
             roller7_5.angle =0;
 
-            roller8.x = 826;
-            roller8.y = 310;
             roller8.speed =5;
             roller8.angle =0;
 
-            roller8_1.x = 884;
-            roller8_1.y = 288;
             roller8_1.speed =5;
             roller8_1.angle =0;
 
-            roller8_2.x = 926;
-            roller8_2.y = 294;
             roller8_2.speed =5;
             roller8_2.angle =0;
 
-            roller8_3.x = 954;
-            roller8_3.y = 310;
             roller8_3.speed =0;
             roller8_3.angle =0;
 
-            roller8_4.x = 976;
-            roller8_4.y = 300;
             roller8_4.speed =8;
             roller8_4.angle =0;
 
-            roller8_5.x = 954;
-            roller8_5.y = 332;
             roller8_5.speed =0;
             roller8_5.angle =0;
 
-            roller9.x = 926;
-            roller9.y = 354;
             roller9.speed =10;
             roller9.angle =0;
 
-            roller9_1.x = 1004;
-            roller9_1.y = 354;
             roller9_1.speed =10;
             roller9_1.angle =0;
 
-            roller9_2.x = 984;
-            roller9_2.y = 370;
             roller9_2.speed =10;
             roller9_2.angle =0;
 
-            roller9_3.x = 1060;
-            roller9_3.y = 458;
             roller9_3.speed =10;
             roller9_3.angle =0;
 
-            roller10.x = 926;
-            roller10.y = 478;
             roller10.speed =10;
             roller10.angle =0;
 
-            roller10_1.x = 1084;
-            roller10_1.y = 478;
             roller10_1.speed =10;
             roller10_1.angle =0;
 
-
-            //粒子直线运动
-            var dots = [],
-                numDots = 800,
-                friction = 0;
-
-            for(var dot,i = 0;i<numDots;i++){
-                dot = new Dot(1,"yellow");
-                dot.x =  270 + Math.random() * 30;
-                dot.y = 50 + Math.random() * 200;
-                dot.vx = 0;
-                dot.vy = 0;
-                dots.push(dot);
-            }
-
-            function drawDots (dot){
-                // dot.vx += Math.random() * 0.2 -0.1;
-                dot.vy += 0.00;
-                // dot.x += dot.vx;
-                dot.y += dot.vy;
-                dot.vx += friction;
-                dot.vy += friction;
-
-                
-                if(dot.y > 250){
-                    dot.y = 50 + Math.random() * 200;
-                    dot.vy = 0;
-                }
-
-                dot.draw(context);
-            }
-
-
             //直线动画  组件化
-            var lineDots = new LineDots();
-                // lineDots.speedX = -0.01;
-                lineDots.speedY = -0.01;
-
-
+            var lineDots1 = new LineDots(270,50,800,30,200,'yellow');
+                lineDots1.speedY = 0.00;
 
             //弧形动画 
-            var circleDots1 = new CircleDots(100,28,6, 3*Math.PI/2,'yellow');
+            var circleDots1 = new CircleDots(266,276,100,28,6, 3*Math.PI/2,'yellow');
                 circleDots1.speed = 0.00;
-                circleDots1.x = 266;
-                circleDots1.y = 276;
+
+            var lineDots2 = new LineDots(250,300,400,20,160,'yellow');
+                lineDots2.speedY = 0.00;
+                
 
             
 
@@ -636,7 +531,9 @@
             drawGear(gear1);
 
             //roller
-            drawRoller(roller);
+            drawRoller(leftRoller1);
+            drawRoller(leftRoller2);
+            drawRoller(roller0);
             drawRoller(roller1);
             drawRoller(roller2);
             drawRoller(roller3);
@@ -682,10 +579,11 @@
             drawRoller(roller10_1);
 
             //直线粒子运动
-            dots.forEach(drawDots);
+            
 
-            lineDots.draw(context);
+            lineDots1.draw(context);
             circleDots1.draw(context);
+            lineDots2.draw(context);
             
         }())
 
