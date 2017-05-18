@@ -242,14 +242,18 @@
 
             //直线动画  组件化
             var lineDots1 = new LineDots(270,50,800,30,200,'yellow');
-                lineDots1.speedY = 0.00;
+                lineDots1.speedY = 0.0;
 
             //弧形动画 
             var circleDots1 = new CircleDots(266,276,100,28,6, 3*Math.PI/2,'yellow');
                 circleDots1.speed = 0.00;
 
-            var lineDots2 = new LineDots(250,300,400,20,160,'yellow');
+            var lineDots2 = new LineDots(250,300,400,20,140,'yellow');
                 lineDots2.speedY = 0.00;
+
+            var obliqueLineDots1 = new ObliqueLineDots(250,390,280,10,120,15);
+                obliqueLineDots1.speed = 0;
+
                 
 
             
@@ -584,6 +588,7 @@
             lineDots1.draw(context);
             circleDots1.draw(context);
             lineDots2.draw(context);
+            obliqueLineDots1.draw(context);
             
         }())
 

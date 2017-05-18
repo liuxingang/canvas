@@ -342,6 +342,88 @@ LineDots.prototype.draw = function(context) {
     }
 };
 
+
+//斜线粒子动画
+//x,y 坐标(y 坐标不是相对于画布的坐标，角度的不同，取不同的正负值)
+//numDots 粒子数量
+//width 粒子分布区域宽度
+//angle 倾斜角度
+//color 粒子颜色
+function ObliqueLineDots(x, y, numDots, angle, width,height, color) {
+    if (numDots === undefined) {
+        numDots = 100;
+    }
+    if (x === undefined) {
+        x = 100;
+    }
+    if (y === undefined) {
+        y = 100;
+    }
+    if (color === undefined) {
+        color = 'yellow';
+    }
+    if (width === undefined) {
+        width = 200;
+    }
+    if (height === undefined) {
+        height = 20;
+    }
+    if (angle === undefined) {
+        angle = 45;
+    }
+
+    this.x = x;
+    this.y = y;
+    this.numDots = numDots;
+    this.dots = [];
+    this.color = color;
+    this.width = width;
+    this.height = height;
+    this.angle = angle * Math.PI/180;
+    this.speed = 0;
+
+    for (var dot, i = 0; i < numDots; i++) {
+        dot = new Dot(1, this.color);
+        dot.x = this.x + Math.random() * this.width;
+        dot.y = dot.x * Math.tan(this.angle) + Math.random() * this.height + this.y;
+        this.dots.push(dot);
+    }
+};
+
+ObliqueLineDots.prototype.draw = function(context) {
+    var self = this;
+
+    function draw(dot, e) {
+        dot.vx = e.speed;
+        dot.vy = e.speed * Math.tan(e.angle);
+        dot.x += dot.vx;
+        dot.y += dot.vy;
+
+        if (e.speed > 0 && dot.x > e.x + e.width) {
+            dot.x = e.x + Math.random() * e.width;
+            dot.y = dot.x * Math.tan(e.angle) + Math.random() * e.height + e.y;
+            dot.vx = 0;
+           
+        }
+
+        
+
+        // if (e.speedY > 0 && dot.y > e.y + e.height) {
+        //     dot.x = e.x + Math.random() * e.width;
+        //     dot.y = dot.x * Math.tan(e.angle) + Math.random() * e.height + e.y
+        //     dot.vx = 0;
+        //     dot.vy = 0;
+        // }
+        
+
+        dot.draw(context);
+    }
+
+    for (var i = 0; i < this.numDots; i++) {
+        draw(this.dots[i], self)
+    }
+};
+
 //圆弧粒子动画
 //x,y 坐标位置
 //numDots 粒子数量
