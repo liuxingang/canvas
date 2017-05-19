@@ -430,7 +430,7 @@ ObliqueLineDots.prototype.draw = function(context) {
 //hashRadiusOut 粒子分布的外径
 //hashRadiusInner 粒子分布的内径
 //color 粒子颜色
-function CircleDots(x, y, numDots, hashRadiusOut, hashRadiusInner, directionSize, color) {
+function CircleDots(x, y, numDots, hashRadiusOut, hashRadiusInner, direction,size, color) {
     if (x === undefined) {
         x = 50;
     }
@@ -449,8 +449,11 @@ function CircleDots(x, y, numDots, hashRadiusOut, hashRadiusInner, directionSize
     if (hashRadiusInner === undefined) {
         hashRadiusInner = 8;
     }
-    if (directionSize === undefined) {
-        directionSize = -Math.PI / 2;
+    if (direction === undefined) {
+        direction = -90;
+    }
+    if (size === undefined) {
+        size = 180;
     }
 
     this.x = x;
@@ -461,12 +464,13 @@ function CircleDots(x, y, numDots, hashRadiusOut, hashRadiusInner, directionSize
     this.hashRadiusOut = hashRadiusOut;
     this.hashRadiusInner = hashRadiusInner;
     this.speed = 0;
-    this.directionSize = directionSize; //控制弧形的大小和方向 
+    this.direction = direction * Math.PI/180; //控制弧形的方向 
+    this.size = size*Math.PI/180;  //弧度的大小
 
 
     for (var dot, i = 0; i < this.numDots; i++) {
         dot = new Dot(1, this.color);
-        dot.angle = Math.random() * (Math.PI) + this.directionSize;
+        dot.angle = Math.random() * (this.size) + this.direction;
         dot.centerRadius = this.hashRadiusOut - Math.random() * this.hashRadiusInner;
         this.dots.push(dot);
     }
@@ -486,15 +490,15 @@ CircleDots.prototype.draw = function(context) {
 
         if (e.speed > 0) {
 
-            if (dot.angle > (e.directionSize + Math.PI)) {
-                dot.angle = Math.random() * (Math.PI) + e.directionSize;
+            if (dot.angle > (e.direction + e.size)) {
+                dot.angle = Math.random() * (e.size) + e.direction;
             }
 
         }
         if (e.speed < 0) {
 
-            if (dot.angle < e.directionSize) {
-                dot.angle = Math.random() * (Math.PI) + e.directionSize;
+            if (dot.angle < e.direction) {
+                dot.angle = Math.random() * (e.size) + e.direction;
             }
 
         }
