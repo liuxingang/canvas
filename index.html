@@ -9,20 +9,33 @@
         background: #ddd;
     }
     
-    #canvas {
+    #canvas_bg{
         background: url(./bg.png) no-repeat;
         background-size: cover;
         border: thin inset #aaaaaa;
+        position: fixed;
+        left:0;
+        top:0;
+        z-index: -10;
+    }
+    #canvas{
+        position: fixed;
+        top:0;
+        left:0;
     }
     </style>
 </head>
 
 <body>
+
+    <canvas id="canvas_bg" width="1200" height="560">not supported</canvas>
     <canvas id="canvas" width="1200" height="560">not supported</canvas>
     <script src="js/utils.js"></script>
     <script src="js/shape.js"></script>
+    <script src="js/bg.js"></script>
     <script>
     window.onload = function() {
+        bgLine();
 
         var canvas = document.getElementById('canvas'),
             context = canvas.getContext("2d"),
@@ -34,11 +47,12 @@
             gear.y = 278;
             gear1.x = 289;
             gear1.y = 238;
-            gear.speed =1;
+            gear.speed =4;
             gear1.speed =-3;
             gear.angle =0;
             gear1.angle =90; 
-            
+        
+        screeSize(canvas, context, 1200, 560);
             //中间两个小滚筒
         var leftRoller1 = new Roller(238,424,10),
             leftRoller2 = new Roller(268,434,10),
@@ -242,27 +256,27 @@
 
             //直线动画  组件化
             var lineDots1 = new LineDots(270,50,800,30,200,'yellow');
-                // lineDots1.speedY = 0.01;
+                lineDots1.speedY = 0.01;
 
             //弧形动画 
             var circleDots1 = new CircleDots(266,276,100,28,6, 270,undefined,'yellow');
-                // circleDots1.speed = 0.01;
+                circleDots1.speed = 0.01;
 
             var lineDots2 = new LineDots(250,300,400,20,140,'yellow');
-                // lineDots2.speedY = 0.01;
+                lineDots2.speedY = 0.01;
             //斜线运动
             var obliqueLineDots1 = new ObliqueLineDots(250,390,280,10,120,15);
-                // obliqueLineDots1.speed = 1;
+                obliqueLineDots1.speed = 1;
 
             var lineDots3 = new LineDots(370,450,200,110,8,'white');
-                // lineDots3.speedX = 0.01;
+                lineDots3.speedX = 0.01;
 
             //右侧传送带水平传送
             var lineDots9 = new LineDots(946,344,100,66,2,'white');
-                // lineDots9.speedX = 0.01;
+                lineDots9.speedX = 0.01;
             //右侧传送带斜线传送
             var obliqueLineDots9 = new ObliqueLineDots(1010,-1560,200,62,66,6,'white');
-                // obliqueLineDots9.speed = 0.5;
+                obliqueLineDots9.speed = 0.5;
 
             //右侧下传送带水平传送
             var lineDots10 = new LineDots(960,468,100,130,2,'white');
@@ -270,183 +284,43 @@
 
             //对应roller3 
             var circleDots3 = new CircleDots(507,442,146,28,2, -90,250,'white');
-                // circleDots3.speed = -0.01;
+                circleDots3.speed = -0.01;
 
             //对应roller4
             var circleDots4 = new CircleDots(546,388,200,42,2, 120,260,'white');
-                // circleDots4.speed = 0.01;
+                circleDots4.speed = 0.01;
 
             //对应roller5
             var circleDots5 = new CircleDots(612,436,200,40,4, -70,310,'white');
-                // circleDots5.speed = -0.01;
+                circleDots5.speed = -0.01;
 
             //对应roller6
             var circleDots6 = new CircleDots(718,376,400,86,4, 140,250,'white');
-                // circleDots6.speed = 0.01;
+                circleDots6.speed = 0.01;
 
             //对应roller7
             var circleDots7 = new CircleDots(826,434,200,40,4, -20,250,'white');
-                // circleDots7.speed = -0.01;
+                circleDots7.speed = -0.01;
 
             //对应roller7-1
             var circleDots7_1 = new CircleDots(884,414,200,22,4, 150,230,'white');
-                // circleDots7_1.speed = 0.01;
+                circleDots7_1.speed = 0.01;
             //对应roller7-2
             var circleDots7_2 = new CircleDots(926,420,200,21,4, -20,230,'white');
-                // circleDots7_2.speed = -0.01;
+                circleDots7_2.speed = -0.01;
 
             //对应roller8
             var circleDots8 = new CircleDots(826,310,200,40,4, -20,250,'white');
-                // circleDots8.speed = -0.01;
+                circleDots8.speed = -0.01;
 
             //对应roller8-1
             var circleDots8_1 = new CircleDots(884,288,200,21,4, 150,230,'white');
-                // circleDots8_1.speed = 0.01;
+                circleDots8_1.speed = 0.01;
             //对应roller8-2
             var circleDots8_2 = new CircleDots(926,294,200,21,4, -20,230,'white');
-                // circleDots8_2.speed = -0.01;
+                circleDots8_2.speed = -0.01;
 
-                
-
-            
-
-
-        //canvas自适应
-        screeSize(canvas, context, 1200, 560);
-
-        function bgLine() {
-
-            context.lineWidth = 1;
-            context.beginPath();
-            context.moveTo(50, 280);
-            context.lineTo(150, 280);
-            context.strokeStyle = '#fff';
-            context.stroke();
-            //小矩形+折线
-            context.save();
-            context.translate(150, 270);
-            context.beginPath();
-            context.strokeRect(0, 0, 10, 20);
-            context.moveTo(5, 0);
-            context.lineTo(5, -33);
-            context.lineTo(115, -33);
-            context.moveTo(5, 20);
-            context.lineTo(5, 75);
-            context.lineTo(99, 75);
-            context.stroke();
-            context.restore();
-            //圆球+大矩形
-            context.save();
-            context.translate(180, 120);
-            context.beginPath();
-            context.moveTo(0, 0);
-            context.lineTo(56, 0);
-            context.arc(50, -32, 22, Math.PI / 2, Math.PI / 4, false);
-            context.lineTo(68, 0);
-            context.lineTo(148, 0);
-            context.lineTo(148, 310);
-            context.lineTo(173, 310);
-            context.lineTo(173, 390);
-            context.lineTo(0, 390);
-            context.closePath();
-            context.stroke();
-            //内部构造
-            context.beginPath();
-            context.moveTo(56, 0);
-            context.lineTo(56, 80);
-            context.lineTo(52, 84);
-            context.lineTo(52, 146);
-            context.arc(80, 160, 30, Math.PI * 1.15, Math.PI * 1.5, false);
-            context.lineTo(86, 128);
-            context.lineTo(86, 24);
-            context.lineTo(40, 24);
-            context.lineTo(40, 40);
-            context.lineTo(26, 40);
-            context.arcTo(22, 40, 20, 44, 6);
-            context.lineTo(20, 289);
-            context.lineTo(122, 288);
-            context.lineTo(122, 238);
-            context.lineTo(28, 238);
-            context.lineTo(28, 70);
-            context.lineTo(38, 70);
-            context.lineTo(38, 84);
-            context.lineTo(43, 84);
-            context.lineTo(43, 130);
-            context.lineTo(48, 130);
-            context.arcTo(48, 178, 54, 180, 30);
-            context.lineTo(68, 288)
-            context.stroke();
-
-            context.beginPath();
-            context.strokeRect(30, 250, 77, 20);
-
-            context.moveTo(148, 24);
-            context.lineTo(120, 24);
-            context.lineTo(120, 100);
-            context.arc(112, 118, 20, -Math.PI / 2.8, Math.PI / 1.6, false);
-            context.arc(90, 159, 26, -Math.PI / 3.5, Math.PI / 2, false);
-            context.lineTo(90, 289);
-            context.stroke();
-
-            context.restore();
-
-            //右侧背景
-            context.save();
-            context.translate(190, 126);
-            context.beginPath();
-            context.moveTo(235,315);
-            context.lineTo(235,238);
-            context.lineTo(420,150);
-            context.lineTo(448,100);
-            context.lineTo(834,100);
-            context.lineTo(834,382);
-            context.lineTo(204,382);
-            context.stroke();
-            //传送带
-            context.beginPath();
-            context.moveTo(186,334);
-            context.lineTo(288,334);
-            context.lineTo(294,330);
-            context.stroke();
-
-            context.beginPath();
-            context.moveTo(186,354);
-            context.lineTo(258,354);
-            context.stroke();
-
-            //右侧传送带
-            context.beginPath();
-            context.moveTo(736,221);
-            // context.lineTo(818,221);
-            context.arcTo(818,221,828,231,8);
-            context.lineTo(878,334);
-            context.moveTo(736,235);
-    
-            context.arcTo(798,235,810,248,8);
-            context.lineTo(865,338);
-            context.stroke();
-
-            //右下侧传送带
-            context.beginPath();
-            context.moveTo(736,345);
-            context.lineTo(896,345);
-            context.stroke();
-
-            context.beginPath();
-            context.moveTo(736,359);
-            context.lineTo(896,359);
-            context.stroke();
-
-
-
-            context.restore();
-
-
-
-
-
-        }
-        bgLine();
+       
 
         for (var i = 0; i < arrowNums; i++) {
             var arrow = new Arrow();
@@ -508,7 +382,6 @@
         (function arrowFrame() {
             window.requestAnimationFrame(arrowFrame, canvas);
             context.clearRect(0, 0, canvas.width, canvas.height);
-            bgLine();
 
             var vx = -0.24,
                 vy = -0.36;

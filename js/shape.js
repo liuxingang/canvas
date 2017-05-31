@@ -189,6 +189,7 @@ function Roller(x,y,radius, color) {
 Roller.prototype.draw = function(context) {
     context.save();
     context.translate(this.x, this.y);
+    context.strokeStyle = '#fff';
     context.rotate(this.rotation);
     context.scale(this.scaleX, this.scaleY);
     var gr = context.createLinearGradient(-this.radius, 0, this.radius, 0);
